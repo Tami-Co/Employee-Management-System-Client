@@ -1,0 +1,253 @@
+.employees-list {
+  width: 80%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .add-employee-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-employee-btn:hover {
+    background-color: #0056b3;
+  }
+
+  // .add-employee-form {
+  //   margin: 20px 0;
+  //   background-color: #f5f5f5;
+
+  //   .form-container {
+  //     display: flex;
+  //     gap: 10px;
+  //     align-items: center;
+
+  //     label {
+  //       display: flex;
+  //       flex-direction: column;
+  //       font-size: 14px;
+
+  //       input {
+  //         padding: 5px;
+  //         font-size: 14px;
+  //         border: 1px solid #ccc;
+  //         border-radius: 4px;
+  //         width: 150px;
+  //       }
+  //     }
+
+  //     .submit-btn {
+  //       padding: 8px 16px;
+  //       background-color: #4caf50;
+  //       color: white;
+  //       border: none;
+  //       border-radius: 4px;
+  //       cursor: pointer;
+  //       font-size: 14px;
+  //       transition: background-color 0.3s ease;
+
+  //       &:hover {
+  //         background-color: #45a049;
+  //       }
+  //     }
+  //   }
+  // }
+  .add-employee-form {
+    margin: 20px 0;
+
+    .form-container {
+      display: flex;
+      gap: 20px; /* רווח אופקי בין כל input */
+      align-items: center;
+      flex-wrap: wrap; /* מאפשר גלישה לשורה חדשה אם החלון קטן מדי */
+
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        margin-bottom: 10px; /* רווח אנכי בין התוויות */
+
+        input {
+          padding: 8px; /* מרווח פנימי בתוך ה-input */
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          width: 150px;
+          margin-top: 5px; /* רווח קטן בין התווית ל-input */
+        }
+      }
+
+      .submit-btn {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+        margin-top: 10px; /* רווח בין הכפתור לשאר האלמנטים */
+
+        &:hover {
+          background-color: #45a049;
+        }
+      }
+    }
+  }
+
+  .add-employee-form input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .submit-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: #218838;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+
+    th,
+    td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    thead {
+      background-color: #f5f5f5;
+
+      th {
+        font-weight: bold;
+        color: #333;
+        text-transform: uppercase;
+        border-bottom: 2px solid #ddd;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+
+        &:hover {
+          background-color: #f9f9f9;
+        }
+
+        td {
+          color: #555;
+        }
+
+        .edit-link {
+          color: #007bff;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .delete-link {
+          color: #e74c3c;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .edit-modal,
+  .delete-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+    .edit-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .modal-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .save-btn {
+          background-color: #28a745;
+          color: white;
+        }
+
+        .cancel-btn {
+          background-color: #dc3545;
+          color: white;
+        }
+
+        button {
+          padding: 8px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+    .delete-btn {
+      background-color: red;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: grey;
+      color: white;
+    }
+    .edit-link,
+    .delete-link {
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+  .modal-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+}

@@ -1,1 +1,102 @@
-<p>employees works!</p>
+<div class="employees-list">
+  <h2>Employees List</h2>
+  <button class="add-employee-btn" (click)="toggleAddEmployee()">Add Employee</button>
+
+  <div *ngIf="showAddEmployeeForm" class="add-employee-form">
+    <div class="form-container">
+      <label>
+        Name:
+        <input [(ngModel)]="newEmployee.name" placeholder="Enter employee name" />
+      </label>
+      <label>
+        ID Number:
+        <input [(ngModel)]="newEmployee.idNumber" placeholder="Enter ID number" />
+      </label>
+      <label>
+        Role:
+        <select [(ngModel)]="newEmployee.roleId">
+          <option *ngFor="let role of listEmployeeRoles" [value]="role.id">
+            {{ role.name }}
+          </option>
+        </select>
+      </label>
+      <label>
+        Manager:
+        <select [(ngModel)]="newEmployee.managerId  ">
+          <option *ngFor="let manager of managersList" [value]="manager.id">
+            {{ manager.name }}
+          </option>
+        </select>
+      </label>
+      <button class="submit-btn" (click)="addNewEmployee()">Submit</button>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>ID Number</th>
+        <th>Role</th>
+        <th>Manager Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of listEmployee">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.idNumber }}</td>
+        <td>{{ employee.employeeRoles?.name }}</td>
+        <td>{{ employee.manager?.name || 'No Manager' }}</td>
+        <td>
+          <a class="edit-link" (click)="editEmployee(employee)">Edit</a> |
+          <a class="delete-link" (click)="confirmDeleteEmployee(employee)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="edit-modal" *ngIf="editingEmployee">
+    <div class="edit-container">
+      <h3>Edit Employee</h3>
+      <label>
+        Name:
+        <input [(ngModel)]="editingEmployee.name" />
+      </label>
+      <label>
+        ID Number:
+        <input [value]="editingEmployee.idNumber" disabled />
+      </label>
+      <label>
+        Role:
+        <select [(ngModel)]="editingEmployee.roleId">
+          <option *ngFor="let role of listEmployeeRoles" [value]="role.id">
+            {{ role.name }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Manager:
+        <select [(ngModel)]="editingEmployee.managerId">
+          <option *ngFor="let manager of managersList" [value]="manager.id">
+            {{ manager.name }}
+          </option>
+        </select>
+      </label>
+
+
+      <div class="modal-actions">
+        <button class="save-btn" (click)="updateEmployee()">Save Changes</button>
+        <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div class="delete-modal" *ngIf="showDeleteConfirmation">
+    <div class="delete-container">
+      <p>Are you sure you want to delete this employee?</p>
+      <div class="modal-actions">
+        <button class="delete-btn" (click)="deleteEmployee()">Yes, Delete</button>
+        <button class="cancel-btn" (click)="cancelDelete()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
