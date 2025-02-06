@@ -26,120 +26,128 @@
     background-color: #0056b3;
   }
 
-  // .add-employee-form {
-  //   margin: 20px 0;
-  //   background-color: #f5f5f5;
+  .add-employee-form,
+  .edit-modal {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
-  //   .form-container {
-  //     display: flex;
-  //     gap: 10px;
-  //     align-items: center;
-
-  //     label {
-  //       display: flex;
-  //       flex-direction: column;
-  //       font-size: 14px;
-
-  //       input {
-  //         padding: 5px;
-  //         font-size: 14px;
-  //         border: 1px solid #ccc;
-  //         border-radius: 4px;
-  //         width: 150px;
-  //       }
-  //     }
-
-  //     .submit-btn {
-  //       padding: 8px 16px;
-  //       background-color: #4caf50;
-  //       color: white;
-  //       border: none;
-  //       border-radius: 4px;
-  //       cursor: pointer;
-  //       font-size: 14px;
-  //       transition: background-color 0.3s ease;
-
-  //       &:hover {
-  //         background-color: #45a049;
-  //       }
-  //     }
-  //   }
-  // }
-  .add-employee-form {
-    margin: 20px 0;
-
-    .form-container {
+    .form-container,
+    .edit-container {
       display: flex;
-      gap: 20px; /* רווח אופקי בין כל input */
-      align-items: center;
-      flex-wrap: wrap; /* מאפשר גלישה לשורה חדשה אם החלון קטן מדי */
+      flex-direction: column;
+      gap: 20px;
+    }
 
-      label {
-        display: flex;
-        flex-direction: column;
-        font-size: 14px;
-        margin-bottom: 10px; /* רווח אנכי בין התוויות */
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
 
-        input {
-          padding: 8px; /* מרווח פנימי בתוך ה-input */
-          font-size: 14px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          width: 150px;
-          margin-top: 5px; /* רווח קטן בין התווית ל-input */
-        }
+      input,
+      select {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-top: 8px;
+        width: 100%;
       }
 
-      .submit-btn {
-        padding: 10px 20px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 4px;
+      select {
         cursor: pointer;
-        font-size: 14px;
-        transition: background-color 0.3s ease;
-        margin-top: 10px; /* רווח בין הכפתור לשאר האלמנטים */
+      }
+    }
 
-        &:hover {
-          background-color: #45a049;
-        }
+    .submit-btn {
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      margin-top: 20px;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+    .cancel-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      padding: 12px 20px;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: #c82333;
       }
     }
   }
 
-  .add-employee-form input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+  .edit-modal {
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
 
-  .submit-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+      .save-btn {
+        background-color: #28a745;
+        color: white;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
 
-  .submit-btn:hover {
-    background-color: #218838;
+        &:hover {
+          background-color: #218838;
+        }
+      }
+
+      .cancel-btn {
+        background-color: #dc3545;
+        color: white;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #c82333;
+        }
+      }
+    }
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
+    font-size: 16px;
+    margin-top: 20px;
 
     th,
     td {
-      padding: 12px 15px;
+      padding: 20px;
       text-align: left;
+      border-right: 1px solid #a9a6a6;
     }
 
     thead {
@@ -155,10 +163,11 @@
 
     tbody {
       tr {
+        background-color: #f9f9f9;
         border-bottom: 1px solid #ddd;
 
         &:hover {
-          background-color: #f9f9f9;
+          background-color: #eaeaea;
         }
 
         td {
@@ -175,7 +184,7 @@
         }
 
         .delete-link {
-          color: #e74c3c;
+          color: #007bff;
           text-decoration: none;
 
           &:hover {
@@ -186,65 +195,200 @@
     }
   }
 
-  .edit-modal,
   .delete-modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background: #d1d1d1;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80vh;
+    font-family: Arial, sans-serif;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+
+    .delete-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+    }
+
+    .delete-btn,
+    .cancel-btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      width: 45%;
+      transition: background-color 0.3s ease;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: white;
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+
+    .cancel-btn {
+      background-color: #6c757d;
+      color: white;
+
+      &:hover {
+        background-color: #5a6268;
+      }
+    }
+
+    &.fade-in {
+      opacity: 0;
+      animation: fadeIn 0.3s forwards;
+    }
+  }
+
+  .delete-modal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(187, 187, 187, 0.5);
+    z-index: -1;
+  }
+
+  .edit-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80vh;
+    font-family: Arial, sans-serif;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 
     .edit-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
+    }
 
-      .modal-actions {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
+    h3 {
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+    }
 
-        .save-btn {
-          background-color: #28a745;
-          color: white;
-        }
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
 
-        .cancel-btn {
-          background-color: #dc3545;
-          color: white;
-        }
+      input,
+      select {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-top: 8px;
+        width: 100%;
+      }
 
-        button {
-          padding: 8px 12px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-
-          &:hover {
-            opacity: 0.8;
-          }
-        }
+      select {
+        cursor: pointer;
       }
     }
-    .delete-btn {
-      background-color: red;
+
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .save-btn,
+    .cancel-btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      width: 45%;
+      transition: background-color 0.3s ease;
+    }
+
+    .save-btn {
+      background-color: #28a745;
       color: white;
+
+      &:hover {
+        background-color: #218838;
+      }
     }
 
     .cancel-btn {
-      background-color: grey;
+      background-color: #dc3545;
       color: white;
+
+      &:hover {
+        background-color: #c82333;
+      }
     }
-    .edit-link,
-    .delete-link {
-      cursor: pointer;
-      color: blue;
-      text-decoration: underline;
+
+    &.fade-in {
+      opacity: 0;
+      animation: fadeIn 0.3s forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   }
+
+  .edit-modal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
   .modal-actions {
     display: flex;
     justify-content: space-around;

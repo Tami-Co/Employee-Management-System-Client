@@ -1,10 +1,31 @@
 .footer {
   width: 100%;
-  text-align: center;
-  padding: 10px;
-  background-color: #333;
+  padding: 20px 0; /* ריווח של יותר מ-10px */
+  background-color: #2c2f36; /* צבע כהה יותר */
   color: white;
-  font-size: 14px;
+  font-size: 16px; /* גודל גופן קריא יותר */
+  text-align: center;
+  border-top: 3px solid #007bff; /* קו עליון כחול מודגש */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* הצללה עדינה עליון */
   position: relative;
-  bottom: 0;
+}
+
+.footer p {
+  margin: 0; /* ביטול ריווח מיותר */
+  font-weight: 300; /* הפחתת משקל הפונט */
+}
+
+.footer a {
+  color: #007bff; /* כחול לאתרים */
+  text-decoration: none;
+  font-weight: bold; /* הדגשת הקישור */
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #0056b3; /* כחול כהה כשעוברים עם העכבר */
+}
+
+.footer p:hover {
+  cursor: default;
 }
