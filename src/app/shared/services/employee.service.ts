@@ -17,6 +17,14 @@ export class EmployeeService {
       sessionStorage.setItem('myToken', token);
     }
   }
+  getEmployeeByNumberId(id: string) {
+    console.log("888");
+
+    return this.http.get<Employee>(`${this.baseUrl}/ByEmployeeId/${id}`);
+  }
+  getEmployeeById(id: string) {
+    return this.http.get<Employee>(`${this.baseUrl}/${id}`);
+  }
   getAllActiveEmployees() {
     return this.http.get<Employee[]>(`${this.baseUrl}/AllActiveEmployees`);
   }
@@ -26,8 +34,14 @@ export class EmployeeService {
   getAllOSEmployee() {
     return this.http.get<Employee[]>(`${this.baseUrl}/AllOSEmployee`);
   }
-  getEmployeeByIdNumber(id: string) {
-    return this.http.get<Employee>(`${this.baseUrl}/EmployeeByNumberId/${id}`);
+
+  login(e: Employee) {
+    return this.http.post(`${this.baseUrl}/Login`, e, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      responseType: 'text' as 'json'
+    });
   }
   addEmployee(e: Employee) {
     return this.http.post<Employee>(`${this.baseUrl}`, e);

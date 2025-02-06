@@ -4,7 +4,6 @@ import { EmployeeService } from '../../shared/services/employee.service';
 import { NgClass, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Employee } from '../../shared/models/employee';
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -14,7 +13,6 @@ import { Employee } from '../../shared/models/employee';
 })
 export class LoginComponent {
   private employeeService = inject(EmployeeService)
-  name: string = '';
   idNumber: string = '';
   employee: Employee = { name: '', idNumber: '', roleId: 0, managerId: 0 };
 
@@ -24,23 +22,31 @@ export class LoginComponent {
     if (this.idNumber && this.idNumber.length === 8) {
       this.idNumber = '0' + this.idNumber;
     }
-
-    this.employeeService.getEmployeeByIdNumber(this.idNumber)
+    this.employee.idNumber = this.idNumber
+    this.employeeService.login(this.employee)
       .subscribe({
-        next: (data: Employee) => {
-          this.employee = data;
-
+        next: (x) => {
+          this.employeeService.token = x.toString();
+          this.router.navigate(['/home']);
         },
         error: () => {
-          return alert('The employee is not exist')
+          return alert('The employee is not exist');
         }
       });
+    this.employeeService.getEmployeeByNumberId(this.idNumber)
+      .subscribe({
+        next: (employee: Employee) => {
+          const employeeDetails = {
+            id: employee.id,
+            role: employee.employeeRoles?.code
+          };
 
-    sessionStorage.setItem('userName', this.name);
-    sessionStorage.setItem('userIdNumber', this.idNumber);
-
-    this.router.navigate(['/home']);
-
+          sessionStorage.setItem('employeeDetails', JSON.stringify(employeeDetails));
+        },
+        error: () => {
+          return alert('failed');
+        }
+      });
 
   }
 }

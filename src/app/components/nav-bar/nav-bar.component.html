@@ -1,8 +1,9 @@
 <nav class="navbar">
-  <ul class="nav-links">
+  <ul class="nav-links" *ngIf="token">
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/employees">All Employees</a></li>
     <li><a routerLink="/management-employees">Management Employees</a></li>
     <li><a routerLink="/contractor-employees">OS Employee</a></li>
+    <li><button class="logout-btn" (click)="logout()">Logout</button></li>
   </ul>
 </nav>

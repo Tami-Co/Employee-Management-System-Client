@@ -1,6 +1,6 @@
 <div class="employees-list">
   <h2>Employees List</h2>
-  <button class="add-employee-btn" (click)="toggleAddEmployee()">Add Employee</button>
+  <button *ngIf="role!=5543" class="add-employee-btn" (click)="toggleAddEmployee()">Add Employee</button>
 
   <div *ngIf="showAddEmployeeForm" class="add-employee-form">
     <div class="form-container">
@@ -42,6 +42,16 @@
       </tr>
     </thead>
     <tbody>
+      <tr *ngIf="role != 0 ">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.idNumber }}</td>
+        <td>{{ employee.employeeRoles?.name }}</td>
+        <td>{{ employee.manager?.name || 'No Manager' }}</td>
+        <td>
+          <a class="edit-link" (click)="editEmployee(employee)">Edit</a> |
+          <a class="delete-link" (click)="confirmDeleteEmployee(employee)">Delete</a>
+        </td>
+      </tr>
       <tr *ngFor="let employee of listEmployee">
         <td>{{ employee.name }}</td>
         <td>{{ employee.idNumber }}</td>

@@ -17,6 +17,7 @@ export class EmployeesComponent implements OnInit {
   private employeeService = inject(EmployeeService);
   private employeeRolesService = inject(EmployeeRolesService);
   listEmployee: Employee[] = [];
+  employee: Employee = { name: '', idNumber: '', roleId: 0, managerId: 0 };
   managersList: Employee[] = [];
   listEmployeeRoles: EmployeeRoles[] = [];
   showAddEmployeeForm = false;
@@ -26,9 +27,28 @@ export class EmployeesComponent implements OnInit {
   employeeIdToDelete: string = '';
   newEmployee: Employee = { name: '', idNumber: '', roleId: 0, managerId: 0 };
   managerRoleId: number = 0;
+  role: number = 0
 
   ngOnInit(): void {
-    this.fetchEmployees();
+    const storedEmployeeDetails = sessionStorage.getItem('employeeDetails');
+    if (storedEmployeeDetails) {
+      const employeeDetails = JSON.parse(storedEmployeeDetails);
+      if (employeeDetails.role != 5543) {
+        this.fetchEmployees();
+      }
+      else {
+        this.employeeService.getEmployeeById(employeeDetails.id).subscribe({
+          next: (data: Employee) => {
+            this.employee = data;
+            this.role = employeeDetails.role
+          },
+          error: (err) => {
+            return alert(`failed ${err}`)
+          }
+        });
+      }
+    }
+
     this.fetchEmployeeRoles();
   }
   fetchEmployees(): void {
@@ -109,7 +129,9 @@ export class EmployeesComponent implements OnInit {
 
     this.employeeService.updateEmployee(updatedEmployee, this.idEditingEmployee).subscribe({
       next: () => {
-        this.fetchEmployees();
+        if (this.role == 0) {
+          this.fetchEmployees();
+        }
         this.editingEmployee = null;
       },
       error: (err) => {
